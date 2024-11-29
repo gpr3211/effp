@@ -1,4 +1,4 @@
-package eefp
+package effp
 
 import (
 	"reflect"

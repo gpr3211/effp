@@ -1,4 +1,4 @@
-package main
+package effp
 
 import (
 	"github.com/stretchr/testify/assert"

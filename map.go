@@ -1,6 +1,6 @@
-package eefp
+package effp
 
-import "github.com/gpr3211/eefp/assert"
+import "github.com/gpr3211/effp/assert"
 
 // MapFunc type of Any func(A any) A
 type MapFunc[A any] func(A) A

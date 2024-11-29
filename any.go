@@ -1,4 +1,4 @@
-package main
+package effp
 
 // Exists takes in any array and returns true if predicate is true for any element.
 //

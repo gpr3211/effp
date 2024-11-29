@@ -1,4 +1,4 @@
-package main
+package effp
 
 // Predicate type takes any type of slice  and a function which returns a bool
 type Predicate[A any] func(A) bool
