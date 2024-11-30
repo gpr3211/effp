@@ -28,12 +28,16 @@ func Filter[A any](input []A, pred Predicate[A]) []A
 ```
 4. Set
 5. Any
-6. All
+6. All. Returns true if all elements satisfy predicate.
+``` go
+   func All[A any](input []A, pred Predicate[A]) bool
+```
+- Example
+```go
+
+```
 8. 
 ## FUNCTIONS
-
-- func All[A any](input []A, pred Predicate[A]) bool
-        All returns true if all elements satisfy predicate
 
 - func Any[A any](input []A, pred Predicate[A]) bool
     Any takes in any array and returns true if predicate is true for an element.
