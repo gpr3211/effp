@@ -16,7 +16,7 @@ func Filter[A any](input []A, pred Predicate[A]) []A
         input  :=  []int{1, 2, 3, 4, 5, 6},
         EvenPredicate := func(n int) bool {return n % 2 == 0}
         evens := Filter(input,EvenPredicate)
-  //    input == []int{2,4,6}
+  //    evens == []int{2,4,6}
   ```
 3. Map
 - Map applies a Mapping function to each element.
@@ -26,7 +26,30 @@ func Filter[A any](input []A, pred Predicate[A]) []A
 ```go
         func Map[A any](input []A, m MapFunc[A]) ([]A,error)
 ```
+- Example
+  ```go
+        input  :=  []int{1, 2, 3}
+        DoubleFunc := func(n int) int {return n * 2}
+        timesTwo,err := Map(input,DoubleFunc)
+  //    timesTwo == []int{2,4,6}
+  ```
+- Map wil return nil and error if there is a nil value.
+- Coming MapWithNil which will also return a an index slice indicating nil items.
 4. Set
+- Set takes a slice and returns a new slice with only the unique elements.
+  ```go
+       
+```
+```go
+      func Set[T comparable](slice []T) []T {
+```
+- Example
+  ```go
+        input  :=  []int{1, 2, 3}
+        DoubleFunc := func(n int) int {return n * 2}
+        timesTwo,err := Map(input,DoubleFunc)
+  //    timesTwo == []int{2,4,6}
+  ```
 5. Any
 6. All. Returns true if all elements satisfy predicate.
 ``` go
