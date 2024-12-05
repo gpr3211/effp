@@ -10,6 +10,7 @@ type MapFunc[A any] func(A) A
 func Map[A any](input []A, m MapFunc[A]) ([]A, error) {
 	output := make([]A, len(input))
 	for i, element := range input {
+		// main util of asserNotNil is when working with structs, maps, pointers which can return a nil
 		err := assert.AssertNotNil(element)
 		if err != nil {
 			return nil, err

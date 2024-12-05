@@ -9,29 +9,28 @@ import (
 // It returns an error listing all nil fields, or nil if all fields are non-nil.
 // Generic type T must be a struct.
 func AssertNotNil[T any](s T) error {
-	// Get the reflect value and type of the struct
+	// Get the reflect value and type of the struct.
 	v := reflect.ValueOf(s)
 	t := v.Type()
 
-	// Ensure we're working with a struct
+	// Ensure we're working with a struct.
 	if t.Kind() != reflect.Struct {
 		return fmt.Errorf("AssertNotNil: type %s is not a struct", t.Name())
 	}
 	var nilFields []string
 
-	// Iterate through all fields in the struct
+	// Iterate through all fields in the struct.
 	for i := 0; i < t.NumField(); i++ {
 		field := v.Field(i)
 		fieldType := t.Field(i)
 
-		// Check if the field is a pointer
+		// Check if the field is a pointer.
 		if field.Kind() == reflect.Pointer {
-			// Check if the pointer is nil
 			if field.IsNil() {
 				nilFields = append(nilFields, fieldType.Name)
 			}
 		}
-		// Handle nested structs recursively
+		// Handle nested structs recursively.
 		if field.Kind() == reflect.Struct {
 			if err := AssertNotNil(field.Interface()); err != nil {
 				return fmt.Errorf("in nested struct %s: %w", fieldType.Name, err)
